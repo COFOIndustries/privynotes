@@ -27,6 +27,10 @@ class CommandLineInterface:
                 self.print_help()
             elif command == 'exit':
                 print("Exiting PrivyNotes.")
+            elif command == 'reset_password':
+                self.reset_password()
+
+            elif command == 'exit':
                 break
             else:
                 print("Unknown command. Type 'help' for a list of commands.")
