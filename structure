@@ -1,0 +1,13 @@
+PrivyNotes/
+│
+├── README.md          # Instructions for setup and usage
+├── requirements.txt   # Python dependencies
+├── privynotes.py      # Main Python application
+├── encryption.py      # Encryption/decryption logic (AES)
+├── storage.py         # SQLite database handler
+├── ui.py              # CLI for interacting with notes
+│
+└── tests/             # Unit tests for each part of the app
+    ├── test_encryption.py
+    ├── test_storage.py
+    └── test_ui.py
