@@ -1,0 +1,207 @@
+# PrivyNotes: A Privacy-First Encrypted Notes Application
+
+Welcome to **PrivyNotes**, your secure and private notes companion. This guide provides all the necessary information to help you set up and use PrivyNotes effectively.
+
+---
+
+## Table of Contents
+
+1. Introduction
+2. Key Features
+3. Installation and Setup
+4. Usage Instructions
+5. Tips for an Enhanced Experience
+6. Enjoying the Code Better
+7. Frequently Asked Questions (FAQ)
+8. Troubleshooting
+9. Conclusion
+10. Contact and Support
+
+---
+
+## 1. Introduction
+
+PrivyNotes is a Python-based application designed with privacy and security at its core. It allows you to create, edit, and manage notes locally on your machine, with all content encrypted using AES-256 encryption. Your notes are protected with a master password that only you know, ensuring that your personal information remains confidential.
+
+---
+
+## 2. Key Features
+
+- **Strong Encryption**: Uses AES-256 encryption for securing your note content.
+- **User-Controlled Access**: A master password defined by you controls access to your notes.
+- **Local Storage**: All notes are stored locally on your machine; no data is sent over the network.
+- **Minimalistic Interface**: A simple Command-Line Interface (CLI) for easy interaction.
+- **Metadata Management**: Note titles and tags are stored in a local SQLite database for easy organization.
+- **Markdown Support**: Optionally supports Markdown formatting for your notes.
+
+---
+
+## 3. Installation and Setup
+
+### Prerequisites
+
+- **Operating System**: Linux (Ubuntu, Fedora, etc.)
+- **Python Version**: Python 3.6 or higher
+- **Dependencies**: Listed in `requirements.txt` (primarily `pycryptodome` for encryption)
+
+### Steps to Install
+
+1. **Clone the Repository**
+
+   Open your terminal and run:
+
+   ```bash
+   git clone https://github.com/COFOIndustries/privynotes.git
+   cd PrivyNotes
+
+2. Set Up a Virtual Environment
+
+recommended to manage dependencies, up to user. 
+
+  python3 -m venv venv
+source venv/bin/activate
+
+3. Install Dependencies
+  install the required Python packages: 
+    pip install -r requirements.txt
+
+
+---
+
+4. Usage Instructions
+
+### First-Time Setup
+
+- **Set Master Password**: On the first run, you'll be prompted to set a master password. This password is crucial for encrypting and decrypting your notes.
+
+  **Important**: Keep your master password safe. If you forget it, you won't be able to access your notes.
+
+### Running the Application
+
+Start the application by running:
+
+```bash
+python privynotes.py
+
+---
+Available Commands: 
+
+**Create a New Note** -> new
+
+**End your note content input** -> type 'END' on a new line. 
+
+**Edit an Existing Note** -> edit <note_id> 
+
+**Delete a Note** -> delete <note_id> 
+
+**List All Notes** -> list
+
+**Help** --> help
+
+**Exit** -> exit
+
+---
+
+5. Tips for an Enhanced Experience
+
+- **Organize with Tags**: Use tags to categorize your notes, making it easier to search and manage them.
+- **Markdown Formatting**: While entering note content, you can format your text using Markdown syntax for better readability.
+- **Regular Backups**: Since all data is stored locally, consider backing up your `notes/` directory and `notes.db` file to prevent data loss.
+
+---
+
+6. Enjoying the Code Better
+
+To help you appreciate the design and functionality of PrivyNotes, here's some additional information:
+
+- **Simplicity and Security**: PrivyNotes is built with simplicity in mind, ensuring that security doesn't come at the cost of usability.
+- **Modular Design**: The codebase is modular, making it easy to understand and modify. Each component (encryption, storage, UI) is encapsulated in its own module.
+- **Learning Opportunity**: If you're interested in Python programming or cryptography, exploring the code can be an excellent learning experience.
+
+---
+
+## 7. Frequently Asked Questions (FAQ)
+
+### Q1: What happens if I forget my master password?
+
+**A**: For security reasons, the master password is not stored in plain text, and there is no password recovery mechanism. If you forget your master password, you will not be able to decrypt your notes. It's crucial to remember your master password or store it securely.
+
+---
+
+### Q2: Can I change my master password?
+
+**A**: Changing the master password isn't directly supported because the existing notes are encrypted with the original password. However, you can implement a password change feature by decrypting all notes with the old password and re-encrypting them with the new password. This requires modifying the code to support this functionality.
+
+---
+
+### Q3: Is my data safe if I move the application to another computer?
+
+**A**: Yes, you can move the `notes/` directory, `notes.db`, and `master.hash` files to another computer. Ensure that you have the same Python environment and dependencies installed. Remember, you'll need your master password to access your notes on the new machine.
+
+---
+
+### Q4: How do I back up my notes?
+
+**A**: Since all your data is stored locally, you can back up your notes by copying the `notes/` directory and `notes.db` file to a secure location. Ensure that `master.hash` is also backed up if you plan to restore your notes elsewhere.
+
+---
+
+### Q5: Can I use this application on Windows or macOS?
+
+**A**: PrivyNotes is designed for Linux environments, but with minor modifications, it can work on Windows or macOS. You'll need to ensure that Python and the required dependencies are properly installed on your system.
+
+---
+
+### Q6: How secure is AES-256 encryption?
+
+**A**: AES-256 is considered highly secure and is widely used for sensitive data encryption. However, the overall security also depends on how well you protect your master password.
+
+---
+
+### Q7: Why are note contents stored in files and not in the database?
+
+**A**: Storing encrypted note content in individual files allows for better separation of metadata and content. It also makes it easier to manage large amounts of data without affecting database performance.
+
+---
+
+### Q8: Can I add a graphical user interface (GUI) to this application?
+
+**A**: Yes, you can enhance PrivyNotes by integrating a GUI using libraries like Tkinter, PyQt, or Kivy. The modular design of the codebase makes it easier to extend and add new features.
+
+---
+
+## 8. Troubleshooting
+
+- **Issue**: Application crashes when starting.
+
+  **Solution**: Ensure all dependencies are installed correctly. Run `pip install -r requirements.txt` to reinstall them.
+
+---
+
+- **Issue**: Can't decrypt notes after changing the master password file.
+
+  **Solution**: Do not modify or delete the `master.hash` file. If this file is altered, the application won't be able to verify your master password, and your notes will become inaccessible.
+
+---
+
+- **Issue**: Receiving "Incorrect master password" message.
+
+  **Solution**: Double-check that you're entering the correct master password. Remember that the password is case-sensitive.
+
+---
+
+## 9. Conclusion
+
+PrivyNotes offers a secure and private way to manage your notes locally. By following this guide, you should be able to set up and use the application effectively. Feel free to explore the code to understand how it works or to customize it according to your needs.
+
+---
+
+**Enjoy using PrivyNotes and happy note-taking!**
+
+---
+
+## 10. Contact and Support
+
+If you have any questions or need assistance, please reach out to [bcofo@proton.me](mailto:bcofo@proton.me).
+
+---
