@@ -8,7 +8,9 @@ class EncryptionHandler:
 
     def set_key(self, password):
         print("Generating encryption key...")
-        self.key = self.get_hash(password).encode('utf-8')
+        # Use the raw binary digest instead of the hex representation
+        hasher = SHA256.new(password.encode('utf-8'))
+        self.key = hasher.digest()  # This gives a 32-byte key for AES-256
         print("Key generated successfully.")
 
     def encrypt(self, data):
@@ -29,7 +31,6 @@ class EncryptionHandler:
         return decrypted_data.decode('utf-8')
 
     def get_hash(self, password):
-        """Generates a SHA-256 hash of the password to be used as the key."""
+        """Generates a SHA-256 hash of the password."""
         hasher = SHA256.new(password.encode('utf-8'))
         return hasher.hexdigest()
-
